@@ -1,0 +1,178 @@
+.doctor-header {
+  height: 80px;
+  background: #10b981;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header-left { 
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+}
+
+.mobile-toggle { 
+  display: none; 
+  background: rgba(255,255,255,0.2); 
+  border: none; 
+  color: white; 
+  padding: 10px; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-size: 20px;
+}
+
+.page-title { 
+  font-size: 24px; 
+  font-weight: 700; 
+  margin: 0; 
+  white-space: nowrap;
+}
+
+.header-right { 
+  display: flex;
+  align-items: center;
+}
+
+.header-profile-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.header-profile-section:hover { 
+  background: rgba(255,255,255,0.2); 
+}
+
+.profile-info { 
+  text-align: right; 
+}
+
+.profile-name { 
+  display: block; 
+  font-size: 14px; 
+  font-weight: 600; 
+}
+
+.header-avatar { 
+  width: 42px; 
+  height: 42px; 
+  border-radius: 50%; 
+  border: 2px solid white; 
+  object-fit: cover; 
+}
+
+/* ======================================================
+   DROPDOWN MENU - EXACT PATIENT STYLE FIX
+   ====================================================== */
+.header-dropdown-menu {
+  position: absolute;
+  top: 85px; /* Header height ke thoda niche */
+  right: 20px; /* Screen ke edge se gap (Patient Header style) */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 220px; /* Fixed width taaki patla na ho */
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-user-info {
+  padding: 8px 10px 12px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 5px;
+}
+
+.dropdown-user-info .name {
+  display: block;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.dropdown-user-info .role {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.header-dropdown-menu button {
+  width: 100%;
+  padding: 12px 15px;
+  text-align: left;
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #334155;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.header-dropdown-menu button:hover {
+  background: #f8fafc;
+  color: #10b981;
+}
+
+.logout-btn-text {
+  color: #ef4444 !important;
+  background: #fff5f5 !important;
+  margin-top: 5px;
+}
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+@media (max-width: 768px) {
+  .doctor-header { 
+    padding: 0 15px; 
+    height: 70px; 
+  }
+  
+  .mobile-toggle { 
+    display: block; 
+  }
+  
+  .profile-info { 
+    display: none; 
+  }
+  
+  .page-title { 
+    font-size: 18px; 
+  }
+
+  .header-dropdown-menu {
+    top: 75px; /* Mobile header ke hisab se top position */
+    right: 15px; /* Mobile edge gap */
+    width: 200px; /* Mobile par bhi full width content dikhega */
+  }
+}

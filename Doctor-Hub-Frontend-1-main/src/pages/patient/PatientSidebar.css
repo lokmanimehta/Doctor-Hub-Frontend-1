@@ -1,0 +1,284 @@
+/* --- Core Sidebar Styling --- */
+.patient-sidebar {
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2000;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.04);
+  border-right: 1px solid #f1f5f9;
+}
+
+.patient-sidebar.expanded { width: 260px; }
+.patient-sidebar.collapsed { width: 88px; }
+
+/* --- Header & Logo --- */
+.sidebar-header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.logo-wrapper { display: flex; align-items: center; gap: 12px; }
+.logo-icon-box {
+  background: #10b981;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.patient-logo {
+  font-size: 19px;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+.patient-logo span { color: #10b981; }
+
+.collapse-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+.collapse-btn:hover { background: #10b981; color: white; border-color: #10b981; }
+
+/* --- Navigation & Grouping --- */
+.sidebar-nav { flex: 1; padding: 0 12px; }
+
+.nav-group { margin-bottom: 24px; }
+.group-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+  margin: 0 0 10px 12px;
+  letter-spacing: 1px;
+}
+
+.sidebar-ul { list-style: none; padding: 0; margin: 0; }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: #64748b;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.nav-link:hover {
+  background: #f0fdf4;
+  color: #10b981;
+}
+
+.nav-link.active {
+  background: #10b981 !important; /* Premium Green */
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.nav-link.active .nav-icon {
+  color: #ffffff;
+}
+
+/* Group Title Styling */
+.group-title {
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.nav-icon {
+  font-size: 20px;
+  min-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px; /* 👈 Ye text se gap banayega */
+  transition: all 0.3s ease;
+}
+
+.nav-text { font-size: 14px; font-weight: 500; }
+
+/* Collapsed Icon Centering */
+/* Collapsed Icon Centering */
+@media (min-width: 1025px) {
+  .collapsed .nav-icon { 
+    margin-right: 0;      /* 👈 Margin hata do */
+    justify-content: center; 
+    width: 100%;          /* 👈 Poori width lekar center ho jayega */
+    display: flex;
+  }
+  
+  .collapsed .group-title { 
+    text-align: center; 
+    margin-left: 0; 
+    font-size: 9px; 
+  }
+}
+/* --- Badges --- */
+.nav-badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-left: auto;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3);
+}
+
+.active .nav-badge { background: white; color: #ef4444; }
+
+/* --- User Footer Card --- */
+.sidebar-footer {
+  padding: 20px 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.sidebar-user-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 14px;
+  cursor: pointer;
+  gap: 12px;
+  transition: 0.3s;
+}
+.sidebar-user-card:hover { background: #f1f5f9; }
+
+.user-img-wrapper { position: relative; }
+.user-avatar { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; }
+.online-status {
+  position: absolute; bottom: -2px; right: -2px;
+  width: 12px; height: 12px; background: #22c55e;
+  border: 2px solid #fff; border-radius: 50%;
+}
+
+.user-info { display: flex; flex-direction: column; overflow: hidden; }
+.user-name { font-size: 14px; font-weight: 700; color: #1e293b; white-space: nowrap; text-overflow: ellipsis; }
+.user-role { font-size: 11px; color: #94a3b8; }
+
+/* Dropdown */
+.sidebar-footer-dropdown {
+  position: absolute;
+  bottom: 85px; left: 12px; right: 12px;
+  background: white;
+  border: 1px solid #f1f5f9;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidebar-footer-dropdown button {
+  padding: 10px; border: none; background: transparent;
+  border-radius: 8px; text-align: left; cursor: pointer;
+  font-size: 13px; font-weight: 500; color: #475569;
+}
+.sidebar-footer-dropdown button:hover { background: #f8fafc; color: #10b981; }
+.logout-item:hover { background: #fff1f2 !important; color: #ef4444 !important; }
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .patient-sidebar { transform: translateX(-100%); width: 280px !important; }
+  .patient-sidebar.mobile-active { transform: translateX(0); }
+}
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.logo-container-sidebar {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Jab sidebar full ho */
+.sidebar-logo-full {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.sidebar-logo-main {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.patient-logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary); /* Medical Green */
+  margin: 0;
+  white-space: nowrap;
+}
+
+.patient-logo span {
+  color: var(--text-dark); /* Slate color */
+}
+
+/* Jab sidebar collapsed ho (Icon only) */
+.sidebar-logo-mini {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+  margin-left: -5px; /* Alignment fix jab chota ho */
+}
+
+/* Animation for smooth transition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-5px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Collapse button position adjustment */
+.collapse-btn {
+  background: #f1f5f9;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.collapse-btn:hover {
+  background: var(--primary);
+  color: white;
+}

@@ -1,0 +1,145 @@
+.add-patient-container {
+  padding: 20px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-page-header { margin-bottom: 25px; }
+.form-page-header h2 { color: #1e293b; font-size: 24px; font-weight: 800; }
+.form-page-header p { color: #64748b; font-size: 14px; }
+
+/* ✅ Main Grid Layout */
+.form-sections-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: flex-start; /* Fix for vertical stretching */
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.form-card h3 {
+  font-size: 16px;
+  color: #10b981;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.form-group label { font-size: 13px; font-weight: 600; color: #475569; }
+.mandatory { color: #ef4444; }
+
+.form-group input, .form-group select, .form-group textarea {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: #10b981;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+}
+
+/* ✅ Personal Details Layout Fix */
+.personal-details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  gap: 15px;
+}
+
+textarea { height: 100px; resize: none; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+/* ✅ Critical Status Styling */
+.critical-checkbox {
+  background: #fffbeb;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px dashed #f59e0b;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #10b981;
+  cursor: pointer;
+}
+
+.checkbox-wrapper label {
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  color: #92400e;
+}
+
+.critical-checkbox small {
+  font-size: 12px;
+  color: #b45309;
+  margin-left: 28px;
+}
+
+.error-msg { color: #ef4444; font-size: 12px; }
+
+.form-actions {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.save-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+.save-btn:hover { background: #059669; transform: translateY(-2px); }
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .form-sections-wrapper { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .personal-details-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .save-btn { width: 100%; justify-content: center; }
+}

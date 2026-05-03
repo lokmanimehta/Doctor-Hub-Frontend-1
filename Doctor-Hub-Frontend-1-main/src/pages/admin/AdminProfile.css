@@ -1,0 +1,129 @@
+/* --- ADMIN PROFILE CARD --- */
+.admin-profile {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--card-bg, #ffffff);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft, 0 4px 15px rgba(0, 0, 0, 0.05));
+}
+
+.admin-profile h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--text-heading, #111827);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+/* --- FORM STRUCTURE --- */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- IMAGE UPLOAD SECTION --- */
+.profile-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.profile-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-accent, #2563eb);
+  background: #f3f4f6;
+  padding: 3px;
+}
+
+/* --- INPUT FIELDS --- */
+.profile-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: -15px; /* Brings label closer to its input */
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="number"] {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.profile-form input:focus {
+  outline: none;
+  border-color: var(--primary-accent, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.profile-form input[type="file"] {
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+/* --- SAVE BUTTON --- */
+.profile-form button {
+  padding: 12px;
+  background: var(--primary-accent, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.profile-form button:hover {
+  background: #1d4ed8; /* darker blue */
+  transform: translateY(-1px);
+}
+
+/* ================================================================
+   ALL-SCREEN RESPONSIVE MEDIA QUERIES
+================================================================ */
+
+@media (max-width: 768px) {
+  .admin-profile {
+    margin: 20px 15px; /* Margin on sides for tablets */
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-profile {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: none; /* Flat design for small phones */
+    border: 1px solid #e5e7eb;
+  }
+
+  .admin-profile h2 {
+    font-size: 18px;
+  }
+
+  .profile-preview {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-form input {
+    padding: 14px; /* Larger touch area */
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+  }
+
+  .profile-form button {
+    padding: 14px;
+  }
+}

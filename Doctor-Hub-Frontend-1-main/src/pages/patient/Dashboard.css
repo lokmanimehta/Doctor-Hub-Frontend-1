@@ -1,0 +1,294 @@
+/* src/pages/patient/Dashboard.css */
+:root {
+  --p-primary: #10b981;
+  --p-blue: #3b82f6;
+  --p-dark: #00c1e3;
+  --p-light-bg: #f8fafc;
+  --p-border: #f1f5f9;
+  /* Stronger shadow for better card separation */
+  --p-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); 
+  --p-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.patient-dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  animation: fadeIn 0.8s ease;
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- HEADER SECTION --- */
+.dashboard-header-premium {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  gap: 20px;
+  height: auto;
+}
+
+.hero-main-text { 
+  flex: 1; 
+  min-width: 280px; 
+}
+
+.hero-main-text h1 { 
+  font-size: clamp(24px, 5vw, 34px);
+  font-weight: 800; 
+  color: var(--p-dark); 
+  margin: 0; 
+}
+
+.hero-subtitle { 
+  color: #64748b; 
+  margin-top: 8px; 
+  font-size: 16px; 
+  display: block; 
+  line-height: 1.5;
+}
+
+/* --- DAILY TIP CARD (Desktop Only) --- */
+.daily-tip-card {
+  background: white; 
+  padding: 15px 20px; 
+  border-radius: 20px;
+  box-shadow: var(--p-shadow); 
+  border: 1px solid var(--p-border);
+  max-width: 350px; 
+  width: 100%;
+  transition: var(--transition);
+  border-left: 4px solid var(--p-primary);
+  display: block; 
+}
+
+.daily-tip-card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+}
+
+.tip-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  color: black;
+  font-weight: 700; 
+  margin-bottom: 5px; 
+  font-size: 14px; 
+}
+
+.daily-tip-card p { 
+  font-style: italic; 
+  font-size: 13px; 
+  margin: 0; 
+  color: black; 
+}
+
+/* --- APPOINTMENT CARD --- */
+.priority-apt-card-top {
+  background:rgb(249, 255, 169);
+  color: rgb(0, 0, 0);
+  padding: 25px;
+  border-radius: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 45px rgba(49, 66, 92, 0.25);
+  transition: var(--transition);
+}
+
+.priority-apt-card-top:hover { 
+  transform: scale(1.005); 
+}
+
+.apt-header-top { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px; 
+}
+
+.p-badge { 
+  background: var(--p-primary); 
+  padding: 5px 12px; 
+  border-radius: 100px; 
+  font-size: 11px; 
+  font-weight: 700; 
+}
+
+.apt-content-horizontal {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 20px; 
+  flex-wrap: wrap;
+}
+
+.doc-profile-main { display: flex; align-items: center; gap: 15px; }
+
+.doc-avatar-large {
+  width: 55px; height: 55px; 
+  background: rgba(255,255,255,0.1); 
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 800; color: var(--p-primary); 
+  border: 2px solid var(--p-primary);
+}
+
+.apt-details-box { display: flex; gap: 15px; flex-wrap: wrap; }
+
+.detail-item { 
+  display: flex; align-items: center; gap: 8px; font-size: 14px; 
+  background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 12px; 
+}
+
+.manage-btn-top {
+  padding: 12px 25px; border-radius: 12px; border: none;
+  background: var(--p-primary); color: white; font-weight: 700; cursor: pointer;
+  transition: 0.3s;
+}
+
+.manage-btn-top:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+/* --- RECOVERY BANNER --- */
+.recovery-feedback-banner {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: 20px; padding: 25px; margin-bottom: 30px;
+  display: flex; justify-content: space-between; align-items: center;
+  color: white; flex-wrap: wrap; gap: 20px;
+  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+}
+
+.feedback-info { display: flex; align-items: center; gap: 20px; }
+
+.feedback-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+
+.btn-confirm-recovery {
+  background: white; color: var(--p-primary); border: none; padding: 12px 24px;
+  border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s;
+}
+
+.btn-confirm-recovery:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* Still Unwell Premium Styling */
+.btn-still-unwell {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;-webkit-backdrop-filter: blur(10px); /* Add this line first */
+  backdrop-filter: blur(5px);
+}
+
+.btn-still-unwell:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  border-color: white;
+}
+
+/* --- GRID SYSTEM --- */
+.dashboard-main-grid { 
+  display: grid; 
+  grid-template-columns: 1.6fr 1fr; 
+  gap: 25px; 
+}
+
+.premium-card-white {
+  background: white; padding: 25px; border-radius: 24px;
+  box-shadow: var(--p-shadow); 
+  border: 1px solid var(--p-border); margin-bottom: 25px;
+  transition: var(--transition);
+}
+
+.premium-card-white:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12); 
+}
+
+/* --- LAB TESTS & HOVERS --- */
+/* Isko update karein */
+.test-item-card.premium-hover {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  box-shadow: var(--p-card-shadow);
+  gap: 15px; /* Thoda gap add karein */
+}
+
+.test-item-card.premium-hover:hover {
+  background: white; border-color: var(--p-blue);
+  transform: scale(1.02); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.08);
+}
+
+/* --- VAULT & STATS --- */
+.vault-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+
+.vault-card {
+  background: #f8fafc; padding: 20px; border-radius: 20px; text-align: center;
+  cursor: pointer; transition: 0.3s;
+  border: 1px solid var(--p-border);
+  box-shadow: var(--p-card-shadow);
+}
+
+.vault-card:hover { 
+  background: white; border-color: var(--p-primary); border: 1px solid var(--p-primary);
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 25px rgba(16, 185, 129, 0.1);
+}
+
+.summary-stats-mini { display: flex; gap: 15px; }
+
+.mini-stat.premium-bounce { 
+  flex: 1; background: white; padding: 20px; border-radius: 20px; 
+  border: 1px solid var(--p-border); text-align: center; transition: 0.3s;
+  box-shadow: var(--p-shadow);
+}
+
+.mini-stat.premium-bounce:hover {
+  transform: translateY(-10px); border-color: var(--p-primary);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+}
+
+/* --- TIMELINE --- */
+.timeline-container { border-left: 2px dashed #e2e8f0; padding-left: 30px; margin-left: 10px; }
+.timeline-item { position: relative; margin-bottom: 25px; }
+.timeline-icon {
+  position: absolute; left: -43px; top: 0; width: 24px; height: 24px;
+  background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* --- MOBILE QUERIES --- */
+@media (max-width: 1024px) {
+  .dashboard-main-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  /* HIDE TIP ON MOBILE */
+  .daily-tip-card { display: none; }
+
+  .dashboard-header-premium { flex-direction: column; }
+  .apt-content-horizontal { flex-direction: column; align-items: flex-start; }
+  .apt-details-box { width: 100%; }
+  .manage-btn-top { width: 100%; }
+  .recovery-feedback-banner { flex-direction: column; text-align: center; }
+  .feedback-info { flex-direction: column; }
+  .feedback-btns { width: 100%; }
+  .feedback-btns button { flex: 1; }
+}
+
+@media (max-width: 480px) {
+  .vault-grid { grid-template-columns: 1fr; }
+  .summary-stats-mini { flex-direction: column; }
+  .patient-dashboard-container { padding: 15px; }
+}

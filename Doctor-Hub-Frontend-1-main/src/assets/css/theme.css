@@ -1,0 +1,182 @@
+/* src/assets/css/theme.css */
+
+/* --- Colors --- */
+:root {
+  --bg-light: #f7f9fc;           /* page background */
+  --card-bg: #ffffff;             /* cards and panels */
+  --primary-accent: #10b981;      /* buttons, highlights, active links */
+  --secondary-accent: #f0fdf4;    /* notifications, subtle highlights */
+  --text-heading: #000000;        /* headings */
+  --text-body:#000000;          /* normal text */
+  --text-muted: #6b7280;          /* secondary text */
+  --border-light: #e5e7eb;        /* card/table borders */
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.05); /* soft shadows */
+}
+
+/* --- Typography --- */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-body);
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Buttons --- */
+button.primary {
+  background-color: var(--primary-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button.primary:hover {
+  filter: brightness(0.9);
+}
+
+button.secondary {
+  background-color: var(--secondary-accent);
+  color: var(--text-heading);
+}
+
+/* --- Cards --- */
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  padding: 20px;
+}
+
+/* --- Tables --- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-body);
+}
+
+th {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* --- Sidebar Links --- */
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: var(--text-body);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background-color: var(--primary-accent);
+  color: white;
+}
+
+/* --- Header --- */
+header {
+  background-color: var(--card-bg);
+  color: var(--text-heading);
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-soft);
+}
+
+/* --- Notifications --- */
+.notification {
+  background: var(--secondary-accent);
+  color: var(--text-heading);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* --- Global Scrollbar (optional soft style) --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+/* End of theme.css */
+/* Appointments Table */
+.appointments-section {
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+.appointments-section table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+.appointments-section th, .appointments-section td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    }
+.appointments-section th {
+    color: #6b7280;
+    font-weight: 600;
+    }
+.appointments-section td {
+    color: #374151;
+    }
+/* Notifications */
+.notifications-section {
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+.notifications-section ul {
+    list-style: none;
+    padding: 0;
+    }
+.notifications-section li {
+    background: #f0fdf4;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #374151;
+    }
+.notifications-section li:last-child {
+    margin-bottom: 0;
+    }
+.notifications-section li strong {
+    color: #10b981;
+    }
+    
+    :root {
+  --primary-accent: #10b981; /* green */
+  --secondary-accent: #d1fae5; /* soft green for rows/cards */
+  --bg-light: #f0fdf4; /* page background */
+  --card-bg: #ffffff; /* card background */
+  --text-heading: #111827;
+  --text-muted: #6b7280;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+}

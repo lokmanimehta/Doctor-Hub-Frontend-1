@@ -1,0 +1,415 @@
+:root {
+    --primary: #0f172a;
+    --accent: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.95);
+}
+
+/* Full Page Layout - No padding on sides for maximum use */
+.appointment-page-wrapper {
+    width: 100%;
+    padding: 20px 0; /* Minimal vertical padding */
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Padding adjustment for full width */
+.page-header { 
+    margin-bottom: 25px; 
+    padding: 0 30px; 
+}
+.header-content h2 { font-size: 24px; color: var(--primary); margin: 0; letter-spacing: -0.5px; }
+.header-content p { color: #64748b; margin: 5px 0 0; font-size: 14px; }
+
+/* Filter Card - Responsive Grid */
+.filter-card {
+    background: white;
+    padding: 25px;
+    margin: 0 30px 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+.filter-grid {
+    display: grid;
+    /* Sab filters ek saath line mein */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.f-grp label { display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+.f-grp input, .f-grp select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 13px;
+    transition: all 0.2s;
+    background-color: #fff;
+}
+
+.f-grp input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
+
+/* Search Bar Area */
+.search-bar-row { display: flex; gap: 15px; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+.search-input-wrapper { flex: 1; position: relative; }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); }
+.search-input-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #f1f5f9;
+}
+
+.reset-btn-premium {
+    padding: 12px 20px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.reset-btn-premium:hover { background: #f8fafc; border-color: #94a3b8; }
+
+/* Table Styling - Horizontal Scroll Support */
+.content-card {
+    background: white;
+    margin: 0 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Handle many columns */
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    min-width: 1100px; /* Thoda increase kiya taaki sab ek line mein aaye */
+    table-layout: auto; 
+}
+
+th { 
+    background: #f8fafc; 
+    padding: 15px 12px; 
+    text-align: left; 
+    font-size: 12px; 
+    color: #64748b; 
+    text-transform: uppercase; 
+    border-bottom: 2px solid var(--border-color); 
+    white-space: nowrap;
+}
+
+td { 
+    padding: 12px; 
+    border-bottom: 1px solid #f1f5f9; 
+    font-size: 14px; 
+    vertical-align: middle;
+    white-space: nowrap; /* Saara content ek line mein rakhne ke liye */
+}
+
+.table-row:hover { background-color: #fcfdfe; }
+
+/* Fixed: ID Badge on one line */
+.id-badge { 
+    background: #e2e8f0; 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-family: monospace; 
+    font-weight: bold; 
+    color: var(--primary);
+    display: inline-block;
+}
+
+/* Fixed: Patient Info layout */
+.patient-info { display: flex; flex-direction: column; gap: 2px; }
+.patient-info .p-name { font-weight: 600; color: var(--primary); }
+.patient-info .p-sub { font-size: 12px; color: #94a3b8; }
+
+/* Fixed: Schedule Date Spacing */
+.date-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 120px; /* Space badhaya date ke liye */
+}
+
+/* Badges */
+.badge-premium { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; text-align: center; min-width: 100px; }
+.status-confirmed { background: #dcfce7; color: #15803d; }
+.status-pending { background: #fef3c7; color: #b45309; }
+.status-cancelled { background: #fee2e2; color: #b91c1c; }
+.status-rescheduled { background: #e0f2fe; color: #0369a1; }
+.status-noshow { background: #f1f5f9; color: #475569; }
+
+.crit-pulse { color: var(--danger); font-weight: 800; animation: pulse 2s infinite; display: inline-block; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+/* Fixed: Side-by-Side Action Buttons & Right Alignment */
+.action-cell {
+    text-align: right; /* Right side ka space use karne ke liye */
+    padding-right: 20px;
+    min-width: 230px;
+}
+
+.act-view { 
+    background: #3b82f6; 
+    color: white; 
+    border: none; 
+    padding: 8px 14px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    margin-right: 8px; 
+    font-weight: 600; 
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+}
+
+.act-cancel { 
+    background: white; 
+    color: var(--danger); 
+    border: 1px solid var(--danger); 
+    padding: 8px 14px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+}
+
+.act-cancel:hover { background: var(--danger); color: white; }
+
+/* --- MODAL STYLING (The Premium Fix) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.7); -webkit-backdrop-filter: blur(8px);/* Professional Dark Blur */
+    backdrop-filter: blur(8px);
+    
+    
+    /* Center alignment properties */
+    display: flex !important;
+    align-items: center !important;     /* Vertical center */
+    justify-content: center !important;  /* Horizontal center */
+    
+    z-index: 99999; /* Sabse upar dikhne ke liye */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.premium-modal {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.m-header-dark { background: var(--primary); color: white; padding: 25px; display: flex; justify-content: space-between; align-items: center; }
+.m-title h3 { margin: 0; font-size: 20px; font-weight: 600; }
+.m-title span { font-size: 13px; opacity: 0.6; display: block; margin-top: 4px; }
+.close-btn { background: rgba(255,255,255,0.1); border: none; color: white; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; cursor: pointer; transition: 0.3s; }
+.close-btn:hover { background: var(--danger); }
+
+.m-scroll-body { padding: 30px; overflow-y: auto; background: #fff; }
+
+/* Modal Info Boxes */
+/* --- MODAL STYLING (The Premium Fix) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.7);-webkit-backdrop-filter: blur(10px); /* Add this line first */
+    backdrop-filter: blur(8px);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999;
+    padding: 20px;
+}
+
+.premium-modal {
+    background: white;
+    width: 95%; /* Better for responsiveness */
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+/* FIX: Flexible Grid for Modal Info Boxes */
+.m-grid-3 { 
+    display: flex; 
+    flex-wrap: wrap; /* Yeh boxes ko neeche bhej dega agar space kam hui */
+    gap: 15px; 
+    margin-bottom: 30px; 
+    width: 100%;
+}
+
+.info-box { 
+    flex: 1; /* Equal width allocation */
+    min-width: 250px; /* Minimum width taaki text squash na ho */
+    background: #f8fafc; 
+    padding: 18px; 
+    border-radius: 12px; 
+    border: 1px solid #e2e8f0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-box label { 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    color: #64748b; 
+    font-weight: 800; 
+    display: block; 
+    margin-bottom: 8px; 
+    letter-spacing: 0.5px; 
+}
+
+.info-box p { 
+    margin: 0; 
+    color: var(--primary); 
+    font-size: 14px; 
+    font-weight: 600;
+    line-height: 1.5;
+    word-break: break-all; /* Emails ko break karega screen se bahar jane ke bajaye */
+    white-space: normal; 
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+    .info-box {
+        min-width: 100%; /* Mobile par full width */
+    }
+}
+.sub-text { color: #64748b !important; font-size: 12px !important; }
+
+/* Complaint Box Styling */
+.m-complaint-section h4, .m-notes-section h4 { font-size: 14px; color: var(--primary); margin-bottom: 12px; font-weight: 700; }
+.complaint-box { 
+    background: #fffbeb; 
+    border-left: 4px solid var(--warning); 
+    padding: 20px; 
+    color: #92400e; 
+    font-size: 14px; 
+    line-height: 1.6; 
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 25px;
+}
+
+/* Notes Section Styling */
+.notes-list { 
+    max-height: 200px; 
+    overflow-y: auto; 
+    margin-bottom: 20px; 
+    padding: 10px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+.single-note { 
+    background: white; 
+    padding: 12px; 
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+.note-meta { font-size: 11px; color: #94a3b8; margin-bottom: 6px; font-weight: 600; }
+
+.add-note-box textarea { 
+    width: 100%; height: 80px; padding: 12px; border-radius: 12px; 
+    border: 1px solid var(--border-color); resize: none; font-size: 13px; margin-bottom: 10px;
+    transition: 0.3s;
+}
+.add-note-box textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
+.add-note-box button { background: var(--primary); color: white; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; float: right; }
+
+/* Admin Integrated Controls Styling */
+.m-admin-actions { 
+    margin-top: 40px; 
+    padding: 25px; 
+    background: #f1f5f9; 
+    border-radius: 16px; 
+    border: 2px dashed #cbd5e1;
+}
+.m-admin-actions h4 { margin-top: 0; margin-bottom: 20px; text-align: center; color: #475569; }
+
+.control-row { display: flex; gap: 20px; }
+.ctrl-grp { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.ctrl-grp label { font-size: 12px; font-weight: 700; color: #475569; }
+
+.admin-select, .resched-input-group input { 
+    padding: 12px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 10px; 
+    background: white; 
+    font-size: 13px;
+    width: 100%;
+}
+
+.resched-input-group { display: flex; gap: 10px; }
+.apply-resched-btn { 
+    background: var(--accent); 
+    color: white; border: none; padding: 0 20px; border-radius: 10px; 
+    font-weight: 700; cursor: pointer; transition: 0.3s;
+}
+.apply-resched-btn:hover { background: #059669; transform: translateY(-1px); }
+
+/* Pagination */
+.premium-pagination { padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: white; border-top: 1px solid #f1f5f9; }
+.pg-buttons button { padding: 8px 16px; margin: 0 4px; border: 1px solid var(--border-color); background: white; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.pg-buttons button.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .filter-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .filter-grid { grid-template-columns: 1fr 1fr; }
+    .m-grid-3 { grid-template-columns: 1fr; }
+    .control-row { flex-direction: column; }
+    .search-bar-row { flex-direction: column; align-items: stretch; }
+    .appointment-page-wrapper { padding: 10px 0; }
+    .filter-card, .content-card, .page-header { margin-left: 15px; margin-right: 15px; padding: 15px; }
+    .action-cell { text-align: left; padding-right: 15px; }
+    .profile-modal-card {
+        max-width: 95%;
+        padding: 20px;
+        border-radius: 20px;
+        /* Bottom sheet jaisa look na aaye isliye margin-bottom reset kiya */
+        margin-bottom: 0 !important; 
+    }
+    .modal-overlay {
+        align-items: center !important; /* Mobile par bhi center rakhega */
+        padding: 15px;
+    }
+}

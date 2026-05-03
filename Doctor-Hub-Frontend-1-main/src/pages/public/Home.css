@@ -1,0 +1,1514 @@
+:root {
+  --primary: #10b981;
+  --primary-dark: #059669;
+  --bg-soft: #f8fafc;
+  --text-dark: #000000;
+  --text-light: #64748b;
+  --text-body: #000000; /* Standard Dark Grey for readability */
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --glass: rgba(255, 255, 255, 0.8);
+}
+
+/* Base Styles */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+  font-family: 'Inter', sans-serif; 
+}
+body { 
+  background: var(--bg-soft); 
+  color: var(--text-dark); /* Default black text */
+  overflow-x: hidden; 
+  line-height: 1.5;
+}
+/* Specifically forcing headings and paragraphs to be dark */
+h1, h2, h3, h4, h5, h6 { color: var(--text-dark); }
+p, span, li, td, th { color: var(--text-body); }
+a, a:hover, a:visited, a:active { 
+  text-decoration: none !important; 
+  color: inherit !important; 
+}
+
+/* ==========================================
+   HEADER AUTH & PROFILE ALIGNMENT FIX
+   ========================================== */
+/* Ensure wrapper is only as wide as the icon */
+.profile-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Squircle Icon */
+.profile-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--primary), #34d399);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 17px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    border: 2px solid white;
+    -webkit-user-select: none; 
+    user-select: none;
+}
+.profile-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+}
+
+/* ==========================================
+   THE "FINAL FIX" FOR LAPTOP ALIGNMENT
+   ========================================== */
+.profile-wrapper .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px); 
+    right: 0; /* Laptop edge alignment fix */
+    background: white;
+    width: 280px; /* Professional width */
+    min-width: 280px; 
+    min-height:280px ;
+    height:auto ;
+    border-radius: 20px;
+    box-shadow: var(--shadow-premium);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    z-index: 99999;        /* Sabse upar dikhne ke liye */
+    display: block;
+    transform-origin: top right;
+    animation: dropdownFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    left: auto;
+}
+
+.profile-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+
+@keyframes dropdownPop {
+    from { 
+        opacity: 0; 
+        transform: scale(0.95) translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+}
+/* Header inside Dropdown */
+.user-info-header {
+    padding: 20px;
+    background: linear-gradient(to bottom, #f8fafc, #ffffff);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.user-avatar-mini {
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0; /* Important: Taki avatar squish na ho */
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Long email protection */
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-email {
+    font-size: 12.5px;
+    color: var(--text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dropdown List Items */
+.dropdown-menu .dropdown-item {
+    padding: 14px 20px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f1f5f9;
+    color: var(--primary);
+    padding-left: 25px; /* Subtle slide effect */
+}
+
+.dropdown-item .icon-box {
+    width: 32px;
+    height: 32px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.dropdown-item:hover .icon-box {
+    background: white;
+    color: var(--primary);
+}
+
+.logout-btn {
+    color: #ef4444 !important;
+    border-top: 1px solid var(--border);
+    margin-top: 5px;
+}
+
+.logout-btn:hover {
+    background: #fff1f2 !important;
+}
+
+/* Tablet & Mobile adjustment */
+@media screen and (max-width: 1024px) {
+    .profile-wrapper .dropdown-menu {
+        right: 0;
+        width: 260px;
+    }
+}
+/* ==========================================
+   ULTRA-PREMIUM SIDEBAR (MOBILE)
+   ========================================== */
+.mobile-sidebar {
+    position: fixed; top: 0; right: -100%;
+    width: 300px; height: 100%;
+    background: white; z-index: 2000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+}
+
+.mobile-sidebar.open { right: 0; }
+
+/* Sidebar Profile Container Styling */
+.sidebar-user-container {
+    background: #f8fafc;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.sidebar-profile-card {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar-profile-card.expanded {
+    background: #f1f5f9;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-avatar {
+    width: 50px; height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+.sidebar-info h3 { font-size: 16px; font-weight: 800; color: var(--text-dark); margin: 0; }
+.sidebar-info p { font-size: 12px; color: var(--text-light); margin: 2px 0 0; }
+.side-chevron { margin-left: auto; font-size: 12px; color: var(--text-light); }
+
+/* Sidebar Dropdown Menu (Edit/Dashboard) */
+.sidebar-inner-dropdown {
+    background: white;
+    padding: 8px;
+}
+
+.inner-opt {
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.inner-opt:hover {
+    background: #f0fdf4;
+    color: var(--primary);
+}
+
+.inner-icon { font-size: 16px; }
+
+/* Sidebar Nav Links */
+.sidebar-label { font-size: 11px; text-transform: uppercase; color: var(--text-light); margin: 20px 0 10px; letter-spacing: 1px; font-weight: 800; }
+.sidebar-link {
+    display: flex; align-items: center; gap: 15px;
+    padding: 14px 20px; border-radius: 12px;
+    font-weight: 600; color: var(--text-dark);
+    transition: 0.2s; cursor: pointer;
+}
+.sidebar-link:hover { background: #f0fdf4; color: var(--primary); }
+.sidebar-sub-link { padding: 10px 20px 10px 45px; font-size: 13px; color: var(--primary); font-weight: 600; cursor: pointer; background: #f0fdf4; border-radius: 8px; margin: 2px 0; }
+
+/* Sidebar Footer */
+.sidebar-footer {
+  margin-top: auto; 
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.secondary-btn-mob {
+  background: #f1f5f9;
+  color: var(--text-dark);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.primary-btn-mob {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.logout-red { background: #fee2e2 !important; color: #dc2626 !important; }
+
+/* Blobs */
+.bg-blob { position: fixed; width: 500px; height: 500px; border-radius: 50%; filter: blur(100px); z-index: 0; opacity: 0.15; pointer-events: none; }
+.blob-1 { background: radial-gradient(circle, var(--primary), transparent); top: -150px; left: -150px; }
+.blob-2 { background: radial-gradient(circle, #34d399, transparent); bottom: -150px; right: -150px; }
+
+/* Header */
+.home-header {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 5%; /* Padding fix: 8% height ke liye zyada tha, 5% width is better */
+  height: 80px; 
+  background: var(--glass); 
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); 
+  position: sticky; 
+  top: 0; 
+  z-index: 1000; 
+  border-bottom: 1px solid var(--border);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Logo aur Text ke beech space */
+  cursor: pointer;
+}
+
+/* Logo Image Styling */
+.logo-img {
+  height: 50px; /* Perfect height for navbar */
+  width: auto;
+  object-fit: contain;
+  /* Agar image ka background white hai aur navbar glass, toh ye line help karegi */
+  mix-blend-mode: multiply; 
+}
+
+.header-brand h1 { 
+  font-size: 30px; 
+  font-weight: 800; 
+  color: var(--primary); 
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-brand h1 span { 
+  color: var(--text-dark); 
+  margin-left: 4px;
+}
+
+/* Mobile Responsive Fix */
+@media (max-width: 768px) {
+  .logo-img {
+    height: 50px; /* Mobile par thoda chota */
+  }
+  .header-brand h1 {
+    font-size: 18px;
+  }
+}
+.header-nav { display: flex; gap: 25px; align-items: center; }
+.nav-item { font-weight: 600; color: var(--text-dark); cursor: pointer; font-size: 16px; transition: 0.3s; }
+.nav-item:hover { color: var(--primary); }
+
+/* Desktop Dropdown Menu */
+/* Desktop Dropdown Fix */
+.dropdown-menu-desktop, .dropdown-menu.alignment-fix {
+  position: absolute;
+  top: 100%; /* Header ke thik neeche */
+  right: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 9999; /* Isse upar kuch nahi hona chahiye */
+  display: block; /* JSX handles the mounting, so just ensure it's visible */
+}
+
+/* Parent container ko relative rakho */
+.nav-item.dropdown-toggle, .profile-wrapper {
+  position: relative;
+}
+.dropdown-item { padding: 10px 15px; font-size: 14px; font-weight: 500; cursor: pointer; border-radius: 8px; transition: 0.2s; }
+.dropdown-item:hover { background: #f1f5f9; color: var(--primary); }
+
+/* Hero Section */
+.hero-section { padding: 0 8% 0px; position: relative; z-index: 1; display: flex;align-items: end;margin-bottom: -20px; }
+.hero-container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; width: 100%; }
+.hero-badge-top { display: inline-block; background: #ecfdf5; color: var(--primary); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; margin-bottom: 15px; }
+.hero-content-main h2 { font-size: 3.2rem; line-height: 1.1; font-weight: 900; color: var(--text-dark); margin-bottom: 25px; }
+.hero-content-main h2 span { color: var(--primary); }
+
+.search-box-centered { display: flex; background: white; padding: 8px;gap: 10px; border-radius: 15px; box-shadow: var(--shadow); border: 1px solid var(--border); max-width: 550px; margin-bottom: 20px; }
+.search-input-wrapper { flex: 1; display: flex; align-items: center; padding: 0 12px; }
+.search-box-centered input { width: 100%; border: none; outline: none; padding: 12px 0; font-size: 15px; }
+.hero-search-btn { background:  #10b981; color: white; border: none; padding: 12px 25px; border-radius: 12px; font-weight: 750; cursor: pointer; white-space: nowrap; }
+
+.hero-visual { display: flex; justify-content: flex-end; }
+.hero-visual img { width: 100%; max-width: 400px; border-radius: 30px; display: block; /* Gap remove karne ke liye */
+  margin-bottom: -20px;  margin-top: -20px;/* Image ko container ke border ke thoda aur niche bhejo */
+  transform: translateY(10px);}
+
+/* ==========================================
+   DOCTOR GRID (STRICT COLOR FIX)
+   ========================================== */
+/* SECTION PADDING FIX (LEFT-RIGHT SPACE BACK) */
+.doctors-section {
+  padding: 60px 8%;   /* 🔥 ye important hai */
+  background: white;
+}
+
+/* GRID */
+.doctor-grid-v3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;   /* thoda premium spacing */
+  justify-content: flex-start;
+}
+
+/* CARD */
+.premium-v3-card {
+  flex: 0 0 calc(25% - 18px); /* 🔥 PERFECT 4 CARDS WITH GAP */
+  max-width: calc(25% - 18px);
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.premium-v3-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* IMAGE */
+.v3-card-top {
+  position: relative;
+}
+
+.v3-card-top img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+/* 🔥 NEW PREMIUM RATING */
+.v3-rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #facc15; /* ⭐ yellow star */
+  background: transparent;
+}
+
+/* BODY */
+.v3-card-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.v3-card-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.v3-spec {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.v3-loc,
+.v3-exp,
+.v3-fee {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* BUTTON GROUP */
+.v3-btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+/* BUTTONS */
+.v3-btn-group{
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.v3-btn.secondary {
+  background: var(--primary-dark);
+  color: white;
+}
+.v3-btn.secondary1 {
+  background: var(--primary-dark);
+  color: white;
+}
+
+
+.section-header-pro h2 {
+  font-size: 32px;   /* 🔥 bada kiya */
+  font-weight: 800;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.section-header-pro h2 span {
+  color: var(--primary);
+}
+
+.section-header-pro {
+  text-align: center;
+  margin-bottom: 40px;  /* spacing increase */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .premium-v3-card {
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
+
+  .doctor-grid-v3 {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+  }
+}
+/* Ad Banner */
+.hospital-ad-section { padding: 0 8% 40px; margin-top: -30px; /* Isse banner doctor ki image ke aur paas aa jayega */
+  z-index: 2; position: relative; }
+.hospital-ad-card { 
+  background: linear-gradient(135deg,  #25906e 0%,  #32d9a1 100%);
+  color: rgb(255, 255, 255) !important; padding: 20px; border-radius: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+.ad-badge { background: var(--primary); color: white!important; padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 800; margin-bottom: 12px; display: inline-block; }
+.ad-content-left h3 { font-size: 26px; font-weight: 800; margin-bottom: 10px; color: white!important; }
+.ad-content-left p { color: #cbd5e1!important; font-size: 15px; max-width: 600px; }
+.visit-hosp-btn { background: white; color: #0f172a; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+.visit-hosp-btn:hover { background: var(--primary); color: white!important; transform: scale(1.05); }
+
+/* Specialties */
+.specialties-section { padding: 40px 8%; }
+.specialties-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+.spec-chip { 
+  display: flex; align-items: center; gap: 10px; background: white; 
+  padding: 10px 20px; border-radius: 100px; border: 1px solid var(--border);
+  cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.spec-chip:hover { border-color: var(--primary); transform: translateY(-3px); }
+.spec-icon-box { font-size: 20px; }
+.spec-name-box { font-weight: 700; color: var(--text-dark); font-size: 14px; }
+
+/* Costs Section */
+.costs-section { padding: 100px 8%; background: radial-gradient(circle at top right, #f0fdf4 0%, #f8fafc 50%); position: relative; }
+.costs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.cost-card-styled { 
+  background: var(--white); padding: 50px 30px 35px; border-radius: 30px; text-align: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--border);
+  position: relative; display: flex; flex-direction: column; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);color: var(--text-dark);
+}
+.cost-card-styled:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.2); }
+.pkg-badge { position: absolute; top: 0; right: 30px; background: var(--primary); color: white; padding: 8px 15px; font-size: 11px; font-weight: 800; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; text-transform: uppercase; }
+.cost-icon-circle { width: 90px; height: 90px; background: var(--bg-soft); border-radius: 25px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 45px; transition: 0.5s; }
+.cost-card-styled:hover .cost-icon-circle { background: var(--primary); transform: rotate(-10deg) scale(1.1); }
+.cost-price-tag { font-size: 28px; font-weight: 900; color: var(--primary); }
+.pkg-book-btn { width: 100%; padding: 15px; border-radius: 18px; border: 2px solid var(--primary); background: white; color: var(--primary); font-weight: 800; cursor: pointer; transition: 0.3s; }
+
+/* Modal */
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+
+background: rgba(0,0,0,0.45);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+z-index: 999;
+padding: 20px;
+}
+.profile-modal-card { 
+background: white;
+width: 100%;
+max-width: 500px;
+
+border-radius: 20px;
+padding: 28px;
+
+position: relative;
+
+display: flex;
+flex-direction: column;
+gap: 14px;
+
+animation: slideUp 0.3s ease-out;
+}
+.modal-info {
+display: grid;
+grid-template-columns: 130px 1fr;
+gap: 8px 12px;
+margin-top: 10px;
+}
+
+.modal-label {
+font-weight: 600;
+color: var(--text-dark);
+}
+
+.modal-value {
+color: var(--text-muted);
+}
+.modal-avatar { width: 100px; height: 100px; border-radius: 20px; object-fit: cover; }
+.primary-modal-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 16px; }
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.primary-modal-btn {
+  flex: 1;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-modal-btn:hover {
+  opacity: 0.9;
+}
+
+.secondary-modal-btn {
+  flex: 1;
+  padding: 12px;
+  background: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.secondary-modal-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+@keyframes slideUp {
+from{
+opacity:0;
+transform: translateY(40px);
+}
+
+to{
+opacity:1;
+transform: translateY(0);
+}
+}
+/* Footer */
+.main-footer { background: var(--primary-dark); color: white; padding: 50px 8% 30px; margin-top: 50px; position: relative; z-index: 1; }
+.footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+.footer-column h4 { font-size: 18px; margin-bottom: 25px; color: white; font-weight: 700; position: relative; }
+.footer-list li { margin-bottom: 12px; color: #cbd5e1; cursor: pointer; font-size: 14px; transition: 0.3s; list-style: none; }
+.footer-socials { display: flex; gap: 12px; margin-top: 20px; }
+.social-icon { width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; transition: 0.3s; text-decoration: none; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding: 20px 0; text-align: center; }
+/* --- UIVERSE ICONS FIX --- */
+/* --- UIVERSE ICONS FINAL FIX --- */
+.example-1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 15px 0 0 0;
+  list-style: none;
+  background-color: transparent;
+  height: auto;
+  width: auto;
+}
+
+.example-1 .icon-content {
+  margin-right: 15px;
+  position: relative;
+  display: inline-block; /* Ensure container is properly sized */
+}
+
+.example-1 .icon-content .tooltip {
+  position: absolute;
+  bottom: 125%; /* icon ke upar */
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: #ffffff;
+  color: #000000;
+
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+  width: max-content;   /* IMPORTANT */
+  max-width: 200px;     /* safety for long text */
+
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+
+  z-index: 9999;
+}
+.example-1 .icon-content .tooltip::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  background: #ffffff;
+
+  transform: translateX(-50%) rotate(45deg);
+}
+/* Hover position */
+.example-1 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  bottom: 150%;
+}
+
+.example-1 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -55px; /* Hover par perfect distance */
+}
+
+.example-1 .icon-content .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: rgba(230, 226, 226, 0.25); 
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  border: 1px solid rgba(239, 235, 235, 0.2);
+}
+
+.example-1 .icon-content .link svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff !important;
+  transition: all 0.3s ease;
+}
+
+
+/* Hover Effects */
+.example-1 .icon-content .link[data-social="facebook"]:hover { background-color: #1877F2; }
+.example-1 .icon-content .link[data-social="instagram"]:hover { background-color:  #e1306c; }
+.example-1 .icon-content .link[data-social="linkedin"]:hover { background-color: #0077B5; }
+.example-1 .icon-content .link[data-social="whatsapp"]:hover { background-color: #25D366; }
+
+/* Trending Styling */
+.trending-tags { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
+.tags-flex { display: flex; gap: 8px; flex-wrap: wrap; }
+.trend-tag { background: #f1f5f9; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.trend-tag:hover { background: var(--primary); color: white; }
+/* Responsive Har Screen ke liye */
+@media (max-width: 768px) {
+    /* Dono grid ko 2 columns mein set kiya */
+    .doctor-grid, .costs-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important; /* Space kam ki taki cards bade dikhein */
+        padding: 0 5px !important;
+    }
+
+    /* Doctor Card Fix (Compact & Premium) */
+    .doctor-card-pro {
+        border-radius: 12px !important;
+    }
+    .doc-image-box {
+        height: 110px !important; /* Image ki height kam ki */
+    }
+    .doc-name-text {
+        font-size: 13px !important; /* Chota font for mobile */
+        margin: 4px 0 !important;
+    }
+    .doc-content-box {
+        padding: 8px !important;
+    }
+    .doc-card-footer {
+        gap: 4px !important;
+    }
+    .view-profile-pro, .book-now-pro {
+        font-size: 9px !important;
+        padding: 6px 2px !important;
+    }
+
+    /* 1. Grid Adjustment: Ek line mein do clean cards */
+    .costs-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 0 10px !important;
+    }
+
+    /* 2. Premium Card Styling: Kachra saaf karne ke liye */
+    .cost-card-styled {
+        padding: 15px 10px !important;
+        background: #ffffff !important;
+        border: 1px solid #f1f5f9 !important; /* Subtle border */
+        border-radius: 16px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important; /* Soft premium shadow */
+        min-width: 0 !important;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 3. Icon ko sleek banaya */
+    .cost-icon-circle {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 22px !important;
+        margin-bottom: 8px !important;
+        background: #f0fdf4 !important; /* Light green tint */
+        border-radius: 12px !important;
+    }
+
+    /* 4. Text Clean-up: Heavy description hata di mobile se */
+    .cost-card-styled h3 {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        color: var(--text-dark);
+    }
+
+    /* Description list ko chota aur clean kiya */
+    .cost-card-styled ul {
+        display: none; /* Mobile par list kachra dikhti hai, hide kar do */
+    }
+
+    /* 5. Pricing: Isko highlight kiya */
+    .cost-price-tag {
+        font-size: 15px !important;
+        color: var(--primary) !important;
+        font-weight: 800 !important;
+        margin: 5px 0 !important;
+    }
+
+    .pkg-badge {
+        font-size: 8px !important;
+        padding: 3px 8px !important;
+        right: 10px !important;
+        border-radius: 0 0 6px 6px !important;
+    }
+
+    /* 6. Button: Sleek and compact */
+    .pkg-book-btn {
+        padding: 8px !important;
+        font-size: 11px !important;
+        border-radius: 10px !important;
+        margin-top: auto; /* Push to bottom */
+    }
+   .section-header-pro h2 {
+        font-size: 22px !important;
+    }
+    /* Stats grid ko flex kiya taki space manage ho jaye */
+    div[style*="display: flex"] > div h3 { 
+        font-size: 18px !important; /* Numbers ka size */
+    }
+    div[style*="display: flex"] > div p {
+        font-size: 10px !important; /* Labels ka size */
+    }
+
+   .hero-content-main {
+        width: 100% !important;
+        padding: 0 10px !important; /* Side spacing kam ki */
+        text-align: left !important;
+    }
+
+    /* 1. HERO & BIG SEARCH BAR FIX */
+    .hero-section { padding: 40px 15px !important; }
+    .hero-container { grid-template-columns: 1fr !important; }
+    .hero-visual { display: none; } /* Mobile par image hide taki search upar aaye */
+
+    .hero-content-main { width: 100% !important; text-align: left !important; }
+    .hero-content-main h2 { font-size: 2.2rem !important; }
+
+    .search-box-centered {
+        max-width: 100% !important;
+        width: 100% !important; /* Ab search bar bada dikhega */
+        margin: 20px 0 !important;
+        padding: 10px !important;
+        border-radius: 16px !important;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+    }
+   .search-box-centered input { 
+  width: 100%; 
+  border: none; 
+  outline: none; 
+  padding: 12px 35px 12px 0;  /* X button ke liye space */
+  font-size: 15px; 
+}
+    .hero-search-btn { padding: 12px 20px !important; border-radius: 12px !important; }
+.search-input-wrapper { 
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  padding: 0 12px; 
+  position: relative;   /* important for X button */
+}
+
+/* ================================
+   SEARCH CANCEL BUTTON
+================================ */
+
+
+    /* Trending Tags Fix */
+    .trending-tags { margin-top: 10px !important; flex-wrap: wrap !important; gap: 8px !important; }
+    .trend-tag, .trending-tags span { 
+        font-size: 12px !important; 
+        padding: 6px 15px !important; 
+        border-radius: 100px !important;
+        background: white !important;
+        border: 1px solid var(--border) !important;
+    }
+}
+.showcase-section {
+  padding: 60px 8%;
+  background: #f9fafb;
+  position: relative;
+}
+
+.showcase-section .section-header-pro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  font-weight: 900;
+}
+
+.showcase-section .section-header-pro span {
+  color: var(--primary);
+}
+
+.showcase-section .section-sub-tag {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 25px;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.showcase-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.showcase-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.showcase-card h3 {
+  font-size: 18px;
+  margin: 10px 0 8px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.showcase-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.showcase-type {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.showcase-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Badge colors */
+.badge-new { background: var(--primary); }
+.badge-featured { background: #f59e0b; } /* orange */
+.badge-alert { background: #ef4444; } /* red */
+/* Popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 15px;
+}
+
+/* Popup content box */
+.popup-content {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Buttons group: horizontal */
+.popup-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Know More - bada button */
+.popup-btn-knowmore {
+  flex: 1 1 65%; /* bada button */
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.popup-btn-knowmore:hover {
+  background: #059669; /* thoda dark green hover */
+}
+
+/* Close - chota button */
+.popup-btn-close {
+  flex: 1 1 30%; /* chota button */
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.popup-btn-close:hover {
+  background: #dc2626; /* thoda dark red hover */
+}
+
+/* Popup text */
+.popup-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+.popup-content p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+/* --- POPUP MODAL CSS --- */
+.modal-overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center;
+  z-index: 10000;
+}
+
+.cost-modal-card {
+  background: var(--white); border-radius: 20px; padding: 25px 30px;
+  max-width: 500px; width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative; animation: popupFade 0.3s ease-out;align-items:center; justify-content:center;
+}
+
+@keyframes popupFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close-x {
+  position: absolute; top: 15px; right: 15px; background: #fee2e2;
+  color: #dc2626; border:none; font-size:20px; font-weight:700; cursor:pointer;
+  width:35px; height:35px; border-radius:50%;
+}
+
+.modal-header {
+  display: flex; flex-direction: column; align-items: center; gap:10px;
+  margin-bottom:15px; text-align:center;
+}
+
+.cost-icon-circle-large {
+  width:70px; height:70px; border-radius:50%; background: var(--primary);
+  color:white; display:flex; align-items:center; justify-content:center;
+  font-size:30px; font-weight:700; box-shadow:0 4px 12px rgba(16,185,129,0.3);
+}
+
+.know-more-btn {
+  margin-top:20px; width:100%; padding:12px; background: var(--primary);
+  color:white; font-weight:700; border:none; border-radius:12px; cursor:pointer;
+  transition: all 0.3s ease;
+}
+
+.know-more-btn:hover { background: var(--primary-dark); }
+
+/* --- Mobile responsive remains intact --- */
+@media (max-width: 768px) {
+  .costs-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 0 10px !important; }
+  .cost-card-styled { padding: 15px 10px !important; border-radius:16px !important; }
+  .cost-icon-circle { width:45px !important; height:45px !important; font-size:22px !important; }
+  .cost-price-tag { font-size:15px !important; }
+  .pkg-badge { font-size:8px !important; padding:3px 8px !important; right:10px !important; }
+  .pkg-book-btn { padding:8px !important; font-size:11px !important; border-radius:10px !important; margin-top:auto; }
+  .modal-overlay {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .profile-modal-card, .cost-modal-card {
+        margin-bottom: 0 !important; /* Agar pehle se margin tha toh remove */
+        transform: translateY(0) !important;
+    }
+}
+
+.search-clear-btn{
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #94a3b8;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.search-clear-btn:hover{
+  background: #f1f5f9;
+  color: #ef4444;
+  transform: scale(1.1);
+}
+.search-results {
+  padding: 40px 5%;
+}
+
+.search-results h2 {
+  margin-bottom: 20px;
+}
+
+/* GRID FOR ALL SEARCH RESULTS */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+.doctor-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-4px);
+}
+
+.doctor-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.search-specialty-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.search-cost-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+@media (max-width: 600px) {
+  .main-footer {
+    padding: 40px 5% 20px; /* Side padding kam kar di */
+  }
+
+  .footer-container { 
+    /* Desktop ki tarah columns ko ek line mein lane ke liye */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 10px !important;
+    text-align: left !important;
+    align-items: start !important;
+  }
+
+  /* Logo section ko full width rakhte hain taaki niche ke 3 columns balanced dikhein */
+  .footer-column.brand-col {
+    grid-column: span 3;
+    margin-bottom: 15px;
+    text-align: center; /* Logo aur description center mein ache lagenge */
+  }
+
+  .footer-column h4 {
+    font-size: 13px; /* Size chota kiya taaki wrap na ho */
+    margin-bottom: 10px;
+    white-space: nowrap; /* Heading ko ek line mein rakhne ke liye */
+  }
+
+  .footer-list li, 
+  .footer-contact-info p {
+    font-size: 11px; /* Mobile ke liye optimized font size */
+    margin-bottom: 6px;
+    line-height: 1.4;
+    word-break: break-word; /* Lambe emails ya address wrap ho jayenge */
+  }
+
+  /* Social icons ko thoda chota kiya mobile ke liye */
+  .example-1 .icon-content a {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .example-1 .icon-content a svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+/* --- MOBILE RESPONSIVE FIXES (BELOW 768px) --- */
+@media screen and (max-width: 768px) {
+  
+  /* 1. Hide Desktop Doctor Image on Mobile */
+  .hero-visual.desktop-only {
+    display: none !important;
+  }
+
+  /* 2. Fix Hero Container for Mobile */
+  .hero-container {
+    grid-template-columns: 1fr; /* Single column layout */
+    text-align: center;
+    gap: 20px;
+  }
+
+  .hero-content-main h2 {
+    font-size: 2.2rem; /* Mobile font size */
+    margin-bottom: 20px;
+  }
+
+ .search-box-centered {
+    flex-direction: column;
+    gap: 10px;
+    background: transparent; /* Yeh sahi hai agar aap sirf buttons ko separate dikhana chahte hain */
+    box-shadow: none;
+    border: none;
+}
+
+  .search-input-wrapper {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 10px;
+    
+  }
+
+  .hero-search-btn {
+    width: 100%;
+    padding: 15px;
+  }
+
+  /* 3. Refined Advertisement Banner for Mobile */
+  .hospital-ad-section {
+    padding: 20px 5%;
+    margin-top: 20px; /* Thoda gap top se */
+  }
+
+  .hospital-ad-card {
+    flex-direction: column; /* Content stack vertically */
+    text-align: center;
+    padding: 30px 20px;
+    gap: 15px;
+  }
+
+  .ad-content-left h3 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .ad-content-left p {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .visit-hosp-btn {
+    width: 100%; /* Full width button */
+    font-size: 14px;
+    padding: 12px;
+  }
+  /* Media Query ke andar hi rakhein */
+
+.trend-tag {
+  background: #f1f5f9 !important; /* Light background */
+  color: #1e293b !important;    /* Dark text - Taki hamesha dikhe */
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Text wrap na ho */
+}
+
+/* Jab tag par click karein (Active state) */
+.trend-tag:active, .trend-tag:focus {
+  background: var(--primary) !important;
+  color: rgb(255, 255, 255) !important; /* Click hone par background green aur text white */
+  border-color: var(--primary);
+}
+
+/* Mobile par trending section ko center karne ke liye */
+
+
+.tags-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+.modal-body-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .info-row-item {
+        display: flex !important;
+        align-items: flex-start !important; /* Label aur text top se align rahenge */
+        gap: 8px !important;
+        margin-bottom: 10px !important;
+        width: 100%;
+        text-align: left !important;
+    }
+
+    /* Label (Education:, Experience:, etc.) */
+    .info-row-item strong, 
+    .info-row-item label {
+        min-width: 90px !important; /* Label ko fix width di taaki text ek line se start ho */
+        font-size: 13px !important;
+        color: #1e293b !important;
+        flex-shrink: 0; /* Label squeeze nahi hoga */
+    }
+
+    /* Data (MBBS, MD...) */
+    .info-row-item span,
+    .info-row-item p {
+        flex: 1; /* Bacha hua pura space data le lega */
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        color: #64748b !important;
+        word-break: break-word; /* Lambe words wrap ho jayenge */
+        margin: 0 !important;
+    }
+
+    /* 4. About Doctor Section */
+    .modal-about-section {
+        margin-top: 15px;
+        text-align: left !important;
+    }
+
+    .modal-about-section h4 {
+        font-size: 15px;
+        margin-bottom: 8px;
+        color: var(--primary);
+    }
+
+    .modal-about-section p {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #64748b;
+    }
+  
+}
+.cost-image-box {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.cost-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Isse image stretch nahi hogi */
+  display: block;
+}

@@ -1,0 +1,183 @@
+/* src/pages/patient/PatientHeader.css */
+.patient-header {
+  height: 64px;
+  background: #10b981;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0; /* Default mobile full width */
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+/* Laptop Gap Fix */
+@media (min-width: 1025px) {
+  .patient-header {
+    left: 260px; /* Sidebar expanded width */
+  }
+
+  .patient-header.collapsed-header {
+    left: 80px; /* Sidebar collapsed width */
+  }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hamburger-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .hamburger-btn {
+    display: flex;
+  }
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.profile-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  object-fit: cover;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  width: 200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  z-index: 2000;
+  color: #333;
+border: 1px solid #f0f0f0;
+  animation: slideIn 0.2s ease-out;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-user-card {
+  padding: 0 5px 10px 5px;
+}
+.user-name-dropdown {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0;
+  color: #1a202c;
+}
+
+.user-role-dropdown {
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.premium-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin-bottom: 12px;
+}
+.dropdown-link-premium, .logout-btn-premium {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #4a5568;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: 0.2s;
+  border: none;
+  background: #f8fafc;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+  /* Premium 3D Shadow */
+  box-shadow: 0 4px 0 #e2e8f0; 
+}
+
+.dropdown-link-premium:hover {
+  background: #eff6ff;
+  color: #3182ce;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #bee3f8;
+}
+
+.logout-btn-premium {
+  color: #e53e3e;
+  background: #fff5f5;
+  box-shadow: 0 4px 0 #fed7d7;
+}
+
+.logout-btn-premium:hover {
+  background: #fff1f2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #feb2b2;
+}
+
+.logout-btn-premium:active, .dropdown-link-premium:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #e2e8f0;
+}
+
+.btn-icon-3d {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1);
+}
+
+.profile-blue { background: #3182ce; }
+.logout-red { background: #e53e3e; }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    right: 18px; /* Slight nudge for mobile edge */
+    width: 200px;
+  }
+}
+/* Sidebar Gap Fix */
+@media (min-width: 1025px) {
+  .patient-header { left: 260px; }
+  .patient-header.collapsed-header { left: 80px; }
+}

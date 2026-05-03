@@ -1,0 +1,36 @@
+.doctor-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0fdf4;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.doctor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: all 0.3s ease;
+  height: 100vh;
+}
+
+@media (min-width: 1025px) {
+  .sidebar-expanded .doctor-main { margin-left: 280px; width: calc(100% - 280px); }
+  .sidebar-collapsed .doctor-main { margin-left: 85px; width: calc(100% - 85px); }
+}
+
+.doctor-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f0fdf4;
+}
+
+/* --- MOBILE: REMOVE ALL PADDING --- */
+@media (max-width: 1024px) {
+  .doctor-main { margin-left: 0 !important; width: 100% !important; }
+  .doctor-content { 
+    padding: 10px 0px !important; /* Side padding zero kar di hai */
+  }
+}

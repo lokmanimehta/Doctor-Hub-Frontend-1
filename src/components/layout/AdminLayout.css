@@ -1,0 +1,69 @@
+:root {
+  --admin-bg-main: #f4f6fa;
+  --admin-bg-content: #f9fafb;
+  --admin-footer-bg: #f0f4f8;
+  --admin-primary-green: #10b981;
+  --sidebar-width-expanded: 280px;
+--sidebar-width-collapsed: 88px; /* Fixed width matched with sidebar */  --transition-speed: 0.4s;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  background: var(--admin-bg-main);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevents layout breaking */
+  transition: margin-left var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop Par Sidebar jitni jagah chhodna */
+@media (min-width: 1025px) {
+  .sidebar-is-expanded .admin-main {
+    margin-left: var(--sidebar-width-expanded);
+  }
+  .sidebar-is-collapsed .admin-main {
+    margin-left: var(--sidebar-width-collapsed);
+  }
+}
+
+.admin-content {
+  flex: 1;
+  padding: clamp(15px, 3vw, 30px);
+  min-height: calc(100vh - 65px - 60px); /* Header aur Footer minus */
+  background: var(--admin-bg-content);
+  overflow-y: auto;   /* 🔥 scroll yahin aayega */
+  height: calc(100vh - 65px); /* header minus */
+}
+
+.admin-footer {
+  background: var(--admin-footer-bg);
+  color: #475569;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.admin-footer a {
+  color: var(--admin-primary-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Mobile responsive padding */
+@media (max-width: 1024px) {
+  .admin-main {
+    margin-left: 0 !important;
+  }
+  .admin-content {
+    padding: 15px;
+  }
+}

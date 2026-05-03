@@ -1,0 +1,28 @@
+/* =========================
+   GLOBAL RESET – SAFE BASE
+   ========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #213547;
+}
+
+/* Remove Vite demo styles completely */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
